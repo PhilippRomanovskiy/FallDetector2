@@ -15,7 +15,7 @@ import * as Speech from 'expo-speech';
  function AlertUser({navigation, props}) {
 
     const speak = () => {
-        const thingToSay = 'Plase say Yes if u need help or No if u dont need help';
+        const thingToSay = 'Please say Yes if u need help or No if u dont need help';
         Speech.speak(thingToSay);
         
     };
