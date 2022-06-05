@@ -1,20 +1,68 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./Screens/Home";
+import { TouchableOpacity, StyleSheet } from "react-native";
+import SensorResult from "./Components/Sensors";
+import AlertUser from "./Screens/alert";
+import Call from "./Screens/call";
 
-export default function App() {
+
+TouchableOpacity.defaultProps = { activeOpacity: 0.1 };
+
+class Hidden extends React.Component {
+  render() {
+    //return null;
+  }
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+  
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{ headerShown: false }}
+          styles={stylesApp.title}
+          name="Home"
+          component={HomeScreen}
+        />
+        
+        <Stack.Screen
+          options={{ headerShown: false }}
+          styles={stylesApp.title}
+          name="SensorResult"
+          component={SensorResult}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          styles={stylesApp.title}
+          name="AlertUser"
+          component={AlertUser}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          styles={stylesApp.title}
+          name="Call"
+          component={Call}
+        />
+        
+       
+      </Stack.Navigator>
+    </NavigationContainer>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const stylesApp = StyleSheet.create({
+  title: {
+    marginTop: 50,
   },
 });
+export default App;
